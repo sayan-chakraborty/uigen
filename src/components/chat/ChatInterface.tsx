@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { MessageList } from "./MessageList";
 import { MessageInput } from "./MessageInput";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { useChat } from "@/lib/contexts/chat-context";
 import { Bot } from "lucide-react";
 
@@ -24,16 +25,19 @@ export function ChatInterface() {
   }, [messages]);
 
   return (
-    <div className="flex flex-col h-full p-4 overflow-hidden">
+    <div className="flex flex-col h-full p-4 overflow-hidden bg-white dark:bg-neutral-950">
+      <div className="flex justify-end mb-2 flex-shrink-0">
+        <ThemeToggle />
+      </div>
       {messages.length === 0 ? (
         <div className="flex-1 flex flex-col items-center justify-center px-4 text-center">
-          <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-blue-50 mb-4 shadow-sm">
-            <Bot className="h-7 w-7 text-blue-600" />
+          <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-900/20 mb-4 shadow-sm">
+            <Bot className="h-7 w-7 text-blue-600 dark:text-blue-400" />
           </div>
-          <p className="text-neutral-900 font-semibold text-lg mb-2">
+          <p className="text-neutral-900 dark:text-neutral-100 font-semibold text-lg mb-2">
             Start a conversation to generate React components
           </p>
-          <p className="text-neutral-500 text-sm max-w-sm">
+          <p className="text-neutral-500 dark:text-neutral-400 text-sm max-w-sm">
             I can help you create buttons, forms, cards, and more
           </p>
         </div>
